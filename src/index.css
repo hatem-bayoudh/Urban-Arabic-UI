@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", "Inter", "IBM Plex Sans Arabic", ui-sans-serif, system-ui, sans-serif;
+  --font-headline: "Be Vietnam Pro", "Inter", "IBM Plex Sans Arabic", sans-serif;
+  
+  --color-primary: var(--primary);
+  --color-primary-container: var(--primary-container);
+  --color-on-primary: var(--on-primary);
+  
+  --color-secondary: var(--secondary);
+  --color-secondary-container: var(--secondary-container);
+  --color-on-secondary: var(--on-secondary);
+  
+  --color-tertiary: var(--tertiary);
+  --color-tertiary-container: var(--tertiary-container);
+  --color-on-tertiary: var(--on-tertiary);
+
+  --color-destructive: var(--destructive);
+  --color-on-destructive: var(--on-destructive);
+  --color-destructive-container: var(--destructive-container);
+  --color-on-destructive-container: var(--on-destructive-container);
+  
+  --color-surface: var(--surface);
+  --color-surface-container-low: var(--surface-container-low);
+  --color-surface-container: var(--surface-container);
+  --color-surface-container-high: var(--surface-container-high);
+  --color-surface-container-highest: var(--surface-container-highest);
+  --color-surface-container-lowest: var(--surface-container-lowest);
+  
+  --color-on-surface: var(--on-surface);
+  --color-on-surface-variant: var(--on-surface-variant);
+  --color-outline: var(--outline);
+  --color-outline-variant: var(--outline-variant);
+}
+
+:root {
+  color-scheme: light;
+  --primary: #4d51b1;
+  --primary-container: #9297fc;
+  --on-primary: #f4f1ff;
+  
+  --secondary: #006666;
+  --secondary-container: #8dedec;
+  --on-secondary: #004343;
+  
+  --tertiary: #894c0e;
+  --tertiary-container: #feac67;
+  --on-tertiary: #fff0e7;
+
+  --destructive: #ba1a1a;
+  --on-destructive: #ffffff;
+  --destructive-container: #ffdad6;
+  --on-destructive-container: #410002;
+  
+  --surface: #f8f9fa;
+  --surface-container-low: #e9ecef;
+  --surface-container: #dee2e6;
+  --surface-container-high: #ced4da;
+  --surface-container-highest: #adb5bd;
+  --surface-container-lowest: #ffffff;
+  
+  --on-surface: #1a1b1e;
+  --on-surface-variant: #495057;
+  --outline: #adb5bd;
+  --outline-variant: #dee2e6;
+}
+
+.dark {
+  color-scheme: dark;
+  --primary: #9297fc;
+  --primary-container: #4d51b1;
+  --on-primary: #000000;
+  
+  --secondary: #8dedec;
+  --secondary-container: #006666;
+  --on-secondary: #004343;
+  
+  --tertiary: #feac67;
+  --tertiary-container: #894c0e;
+  --on-tertiary: #fff0e7;
+
+  --destructive: #ffb4ab;
+  --on-destructive: #690005;
+  --destructive-container: #93000a;
+  --on-destructive-container: #ffdad6;
+  
+  --surface: #0f1113;
+  --surface-container-low: #16181a;
+  --surface-container: #1c1f22;
+  --surface-container-high: #25282c;
+  --surface-container-highest: #2e3238;
+  --surface-container-lowest: #08090a;
+  
+  --on-surface: #f8f9fa;
+  --on-surface-variant: #adb5bd;
+  --outline: #495057;
+  --outline-variant: #343a40;
+}
+
+@layer base {
+  body {
+    @apply bg-surface text-on-surface font-sans transition-colors duration-300;
+  }
+}
+
+@layer components {
+  .glass-effect {
+    @apply backdrop-blur-xl bg-surface/70;
+  }
+  
+  .card-shadow {
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
+  }
+  
+  .dark .card-shadow {
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-outline-variant/30 rounded-full hover:bg-outline-variant/50 transition-colors;
+}
