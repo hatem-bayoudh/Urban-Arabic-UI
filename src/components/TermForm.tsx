@@ -8,6 +8,7 @@ import Select from './ui/Select';
 import Button from './ui/Button';
 import Badge from './ui/Badge';
 import FormField from './ui/FormField';
+import Textarea from './ui/Textarea';
 
 interface TermFormProps {
   onSubmit?: (data: any) => void;
@@ -82,13 +83,9 @@ const TermForm: React.FC<TermFormProps> = ({ onSubmit, onChange, initialData, cl
         </div>
 
         <FormField label={isRtl ? 'ماذا يعني؟' : 'What does it mean?'} required>
-          <textarea 
+          <Textarea 
             value={formData.meaning}
             onChange={(e) => handleChange('meaning', e.target.value)}
-            className={cn(
-              "w-full px-5 py-4 bg-surface-container border border-outline-variant/10 rounded-xl focus:ring-2 focus:ring-primary/20 transition-all resize-none text-on-surface",
-              isRtl ? "text-right" : "text-left"
-            )}
             placeholder={isRtl ? "اشرح المعنى والأصل..." : "Explain the meaning and origin..."} 
             rows={4}
           />
@@ -104,7 +101,7 @@ const TermForm: React.FC<TermFormProps> = ({ onSubmit, onChange, initialData, cl
         </FormField>
 
         <FormField label={isRtl ? 'الوسوم' : 'Tags'}>
-          <div className={cn("flex flex-wrap gap-2", isRtl ? "flex-row" : "flex-row-reverse justify-end")}>
+          <div className="flex flex-wrap gap-2">
             <Badge variant="secondary" icon={<X size={14} className="cursor-pointer" />}>#slang</Badge>
             <Badge variant="secondary" icon={<X size={14} className="cursor-pointer" />}>#cairo</Badge>
             <button type="button" className="px-4 py-2 bg-surface-container-high hover:bg-surface-container-highest text-on-surface-variant rounded-full text-sm font-medium transition-colors flex items-center gap-2">
@@ -113,7 +110,7 @@ const TermForm: React.FC<TermFormProps> = ({ onSubmit, onChange, initialData, cl
           </div>
         </FormField>
 
-        <div className={cn("pt-6", isRtl ? "text-right" : "text-left")}>
+        <div className="pt-6">
           <Button type="submit" size="lg" className="w-full md:w-auto">
             {isRtl ? 'شارك المصطلح' : 'Share Term'}
           </Button>

@@ -18,6 +18,7 @@ import Button from '../components/ui/Button';
 import Card from '../components/ui/Card';
 import Input from '../components/ui/Input';
 import Select from '../components/ui/Select';
+import Textarea from '../components/ui/Textarea';
 
 const Settings: React.FC = () => {
   const { isRtl } = useApp();
@@ -62,11 +63,11 @@ const Settings: React.FC = () => {
                     referrerPolicy="no-referrer"
                   />
                 </div>
-                <button className="absolute bottom-1 right-1 bg-primary text-on-primary p-2 rounded-full shadow-lg hover:scale-110 transition-transform">
+                <button className="absolute bottom-1 end-1 bg-primary text-on-primary p-2 rounded-full shadow-lg hover:scale-110 transition-transform">
                   <Camera size={16} />
                 </button>
               </div>
-              <div className={cn(isRtl ? "md:text-right" : "md:text-left")}>
+              <div>
                 <h2 className="text-2xl font-headline font-bold text-on-surface">{profileData.name}</h2>
                 <p className="text-on-surface-variant font-medium">{profileData.username}</p>
                 <p className="text-sm text-outline mt-1">{profileData.role} • {profileData.joined}</p>
@@ -79,7 +80,7 @@ const Settings: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label className="text-sm font-bold text-on-surface-variant ml-1">
+              <label className="text-sm font-bold text-on-surface-variant ms-1">
                 {isRtl ? 'اسم المستخدم' : 'Username'}
               </label>
               <Input 
@@ -88,7 +89,7 @@ const Settings: React.FC = () => {
               />
             </div>
             <div>
-              <label className="text-sm font-bold text-on-surface-variant ml-1">
+              <label className="text-sm font-bold text-on-surface-variant ms-1">
                 {isRtl ? 'البريد الإلكتروني' : 'Email'}
               </label>
               <Input 
@@ -98,11 +99,10 @@ const Settings: React.FC = () => {
               />
             </div>
             <div className="md:col-span-2">
-              <label className="text-sm font-bold text-on-surface-variant ml-1">
+              <label className="text-sm font-bold text-on-surface-variant ms-1">
                 {isRtl ? 'نبذة قصيرة' : 'Short Bio'}
               </label>
-              <textarea 
-                className="w-full bg-surface-container border border-outline-variant/10 rounded-2xl py-3 px-4 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none resize-none text-on-surface"
+              <Textarea 
                 rows={3}
                 defaultValue={profileData.bio}
               />
@@ -214,24 +214,24 @@ const Settings: React.FC = () => {
                 <div className="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-on-surface-variant group-hover:bg-primary/10 group-hover:text-primary transition-colors">
                   <Lock size={20} />
                 </div>
-                <div className={cn(isRtl ? "text-right" : "text-left")}>
+                <div className="text-start">
                   <p className="font-bold text-on-surface">{isRtl ? 'تغيير كلمة المرور' : 'Change Password'}</p>
                   <p className="text-xs text-on-surface-variant">{isRtl ? 'تحديث أمان حسابك' : 'Update your account security'}</p>
                 </div>
               </div>
-              <ChevronRight size={20} className={cn("text-outline group-hover:text-primary transition-colors", isRtl && "rotate-180")} />
+              <ChevronRight size={20} className="text-outline group-hover:text-primary transition-colors rtl:rotate-180" />
             </button>
             <button className="flex-1 p-4 bg-surface-container-low rounded-2xl flex items-center justify-between group cursor-pointer hover:bg-surface-container transition-colors border border-outline-variant/5">
               <div className="flex items-center gap-4">
                 <div className="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-on-surface-variant group-hover:bg-primary/10 group-hover:text-primary transition-colors">
                   <Smartphone size={20} />
                 </div>
-                <div className={cn(isRtl ? "text-right" : "text-left")}>
+                <div className="text-start">
                   <p className="font-bold text-on-surface">{isRtl ? 'التحقق بخطوتين' : '2-Step Verification'}</p>
                   <p className="text-xs text-on-surface-variant">{isRtl ? 'طبقة إضافية من الحماية' : 'Extra layer of protection'}</p>
                 </div>
               </div>
-              <ChevronRight size={20} className={cn("text-outline group-hover:text-primary transition-colors", isRtl && "rotate-180")} />
+              <ChevronRight size={20} className="text-outline group-hover:text-primary transition-colors rtl:rotate-180" />
             </button>
           </div>
         </Card>
@@ -242,7 +242,7 @@ const Settings: React.FC = () => {
             <div className="bg-destructive/10 p-4 rounded-2xl text-destructive">
               <Trash2 size={24} />
             </div>
-            <div className={cn(isRtl ? "text-right" : "text-left")}>
+            <div>
               <h4 className="font-headline font-bold text-on-surface">
                 {isRtl ? 'إلغاء تنشيط الحساب' : 'Deactivate Account'}
               </h4>

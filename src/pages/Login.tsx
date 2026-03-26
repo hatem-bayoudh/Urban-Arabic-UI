@@ -14,6 +14,7 @@ import { useApp } from '../context/AppContext';
 import { cn } from '../lib/utils';
 import Button from '../components/ui/Button';
 import Card from '../components/ui/Card';
+import Input from '../components/ui/Input';
 
 const Login: React.FC = () => {
   const { isRtl } = useApp();
@@ -52,7 +53,7 @@ const Login: React.FC = () => {
         {/* Login Card */}
         <Card padding="none" className="rounded-[1.5rem] shadow-[0_12px_32px_rgba(45,47,49,0.06)] overflow-hidden">
           <div className="p-8 md:p-10">
-            <div className={cn("mb-8", isRtl && "text-right")}>
+            <div className="mb-8">
               <h2 className="font-headline font-bold text-2xl text-on-surface mb-2">
                 {isRtl ? 'مرحباً بعودتك' : 'Welcome back'}
               </h2>
@@ -63,33 +64,19 @@ const Login: React.FC = () => {
 
             <form className="space-y-6" onSubmit={handleSubmit}>
               {/* Email Input */}
-              <div className="space-y-2">
-                <label className={cn("block text-sm font-semibold text-on-surface-variant ml-1", isRtl && "mr-1 ml-0 text-right")} htmlFor="email">
-                  {isRtl ? 'البريد الإلكتروني أو اسم المستخدم' : 'Email or Username'}
-                </label>
-                <div className="relative group">
-                  <div className={cn(
-                    "absolute inset-y-0 flex items-center pointer-events-none text-outline",
-                    isRtl ? "right-4" : "left-4"
-                  )}>
-                    <AtSign size={20} />
-                  </div>
-                  <input 
-                    className={cn(
-                      "w-full py-4 bg-surface-container-low border-none rounded-xl focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all duration-300 placeholder:text-outline-variant text-on-surface font-medium",
-                      isRtl ? "pr-12 pl-4 text-right" : "pl-12 pr-4"
-                    )}
-                    id="email" 
-                    name="email" 
-                    placeholder="name@example.com" 
-                    type="text" 
-                  />
-                </div>
-              </div>
+              <Input 
+                label={isRtl ? 'البريد الإلكتروني أو اسم المستخدم' : 'Email or Username'}
+                id="email"
+                name="email"
+                placeholder="name@example.com"
+                type="text"
+                icon={<AtSign size={20} />}
+                className="bg-surface-container-low border-none focus:bg-surface-container-lowest"
+              />
 
               {/* Password Input */}
               <div className="space-y-2">
-                <div className={cn("flex justify-between items-center ml-1", isRtl && "mr-1 ml-0 flex-row-reverse")}>
+                <div className="flex justify-between items-center ms-1">
                   <label className="block text-sm font-semibold text-on-surface-variant" htmlFor="password">
                     {isRtl ? 'كلمة المرور' : 'Password'}
                   </label>
@@ -98,27 +85,16 @@ const Login: React.FC = () => {
                   </a>
                 </div>
                 <div className="relative group">
-                  <div className={cn(
-                    "absolute inset-y-0 flex items-center pointer-events-none text-outline",
-                    isRtl ? "right-4" : "left-4"
-                  )}>
-                    <Lock size={20} />
-                  </div>
-                  <input 
-                    className={cn(
-                      "w-full py-4 bg-surface-container-low border-none rounded-xl focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all duration-300 placeholder:text-outline-variant text-on-surface font-medium",
-                      isRtl ? "pr-12 pl-12 text-right" : "pl-12 pr-12"
-                    )}
-                    id="password" 
-                    name="password" 
-                    placeholder="••••••••" 
-                    type={showPassword ? "text" : "password"} 
+                  <Input 
+                    id="password"
+                    name="password"
+                    placeholder="••••••••"
+                    type={showPassword ? "text" : "password"}
+                    icon={<Lock size={20} />}
+                    className="bg-surface-container-low border-none focus:bg-surface-container-lowest"
                   />
                   <button 
-                    className={cn(
-                      "absolute inset-y-0 flex items-center text-outline hover:text-on-surface transition-colors",
-                      isRtl ? "left-4" : "right-4"
-                    )}
+                    className="absolute top-1/2 -translate-y-1/2 end-4 flex items-center text-outline hover:text-on-surface transition-colors z-10"
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
                   >
@@ -151,17 +127,11 @@ const Login: React.FC = () => {
 
             {/* Social Buttons */}
             <div className="grid grid-cols-2 gap-4">
-              <button className={cn(
-                "flex items-center justify-center gap-2 py-3 px-4 bg-surface-container-low hover:bg-surface-container-high rounded-xl transition-all duration-200 text-on-surface font-semibold text-sm",
-                isRtl && "flex-row-reverse"
-              )}>
+              <button className="flex items-center justify-center gap-2 py-3 px-4 bg-surface-container-low hover:bg-surface-container-high rounded-xl transition-all duration-200 text-on-surface font-semibold text-sm">
                 <Chrome size={20} className="text-primary" />
                 Google
               </button>
-              <button className={cn(
-                "flex items-center justify-center gap-2 py-3 px-4 bg-surface-container-low hover:bg-surface-container-high rounded-xl transition-all duration-200 text-on-surface font-semibold text-sm",
-                isRtl && "flex-row-reverse"
-              )}>
+              <button className="flex items-center justify-center gap-2 py-3 px-4 bg-surface-container-low hover:bg-surface-container-high rounded-xl transition-all duration-200 text-on-surface font-semibold text-sm">
                 <Apple size={20} className="text-primary" />
                 Apple
               </button>
@@ -196,7 +166,7 @@ const Login: React.FC = () => {
       {/* Visual Decorative Image (Asymmetric Placement) */}
       <div className={cn(
         "fixed bottom-[5%] hidden xl:block w-72",
-        isRtl ? "left-[5%] -rotate-3" : "right-[5%] rotate-3"
+        isRtl ? "start-[5%] -rotate-3" : "end-[5%] rotate-3"
       )}>
         <div className="bg-surface-container-lowest p-2 rounded-[2rem] shadow-xl">
           <img 

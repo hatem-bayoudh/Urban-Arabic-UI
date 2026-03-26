@@ -19,17 +19,12 @@ const FormField: React.FC<FormFieldProps> = ({
   error,
   description,
 }) => {
-  const { isRtl } = useApp();
-
   return (
     <div className={cn("space-y-2 w-full", className)}>
-      <div className={cn("flex items-center justify-between", isRtl ? "flex-row-reverse" : "flex-row")}>
-        <label className={cn(
-          "text-sm font-bold text-on-surface-variant",
-          isRtl ? "pr-1 text-right" : "pl-1 text-left"
-        )}>
+      <div className="flex items-center justify-between">
+        <label className="text-sm font-bold text-on-surface-variant ps-1 text-start">
           {label}
-          {required && <span className="text-destructive ml-1">*</span>}
+          {required && <span className="text-destructive ms-1">*</span>}
         </label>
         {error && <span className="text-xs font-medium text-destructive">{error}</span>}
       </div>
@@ -37,10 +32,7 @@ const FormField: React.FC<FormFieldProps> = ({
       {children}
       
       {description && (
-        <p className={cn(
-          "text-xs text-on-surface-variant/70",
-          isRtl ? "text-right pr-1" : "text-left pl-1"
-        )}>
+        <p className="text-xs text-on-surface-variant/70 text-start ps-1">
           {description}
         </p>
       )}

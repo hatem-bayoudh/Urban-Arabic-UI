@@ -15,10 +15,10 @@ const Explore: React.FC = () => {
   return (
     <div className="space-y-10">
       <Card variant="lowest" padding="lg">
-        <h1 className={cn("text-3xl font-black font-headline text-on-surface mb-6 tracking-tight", isRtl ? "text-right" : "text-left")}>
+        <h1 className="text-3xl font-black font-headline text-on-surface mb-6 tracking-tight">
           {isRtl ? "اكتشف لغة الشوارع" : "Discover the Language of the Streets"}
         </h1>
-        <div className={cn("grid grid-cols-1 md:grid-cols-4 gap-4", isRtl ? "rtl" : "ltr")}>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <div className="md:col-span-2">
             <Input 
               icon={<Search size={24} />}
@@ -39,14 +39,14 @@ const Explore: React.FC = () => {
       </Card>
 
       <section className="space-y-6">
-        <div className={cn("flex justify-between items-end", isRtl ? "flex-row-reverse" : "flex-row")}>
-          <div className={isRtl ? "text-right" : "text-left"}>
+        <div className="flex justify-between items-end">
+          <div>
             <h2 className="text-2xl font-black font-headline text-on-surface">{isRtl ? 'استكشف حسب المنطقة' : 'Explore by Region'}</h2>
             <p className="text-on-surface-variant">{isRtl ? 'اضغط على منطقة للتعمق في تعبيراتها المحلية.' : 'Click a region to dive deep into local expressions.'}</p>
           </div>
           <button className="text-primary font-bold text-sm flex items-center gap-1 hover:underline">
             <span>{isRtl ? 'عرض كل المناطق' : 'View All Regions'}</span>
-            {isRtl ? <ArrowLeft size={16} /> : <ArrowRight size={16} />}
+            <ArrowRight size={16} className="rtl:rotate-180" />
           </button>
         </div>
 
@@ -59,10 +59,10 @@ const Explore: React.FC = () => {
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-              <div className={cn("absolute bottom-0 p-6 w-full", isRtl ? "text-right right-0" : "text-left left-0")}>
+              <div className="absolute bottom-0 p-6 w-full start-0">
                 <h3 className="text-xl font-black text-white mb-1">{region.name}</h3>
                 <p className="text-xs text-white/70">{region.countries}</p>
-                <div className={cn("mt-4 flex", isRtl ? "justify-end" : "justify-start")}>
+                <div className="mt-4 flex">
                   <Badge variant="secondary">
                     {region.termCount} {isRtl ? 'مصطلح' : 'Terms'}
                   </Badge>

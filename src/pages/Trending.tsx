@@ -74,7 +74,7 @@ const Trending: React.FC = () => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
       <div className="lg:col-span-8 space-y-8">
-        <header className={cn(isRtl ? "text-right" : "text-left")}>
+        <header>
           <h1 className="text-4xl lg:text-5xl font-black text-on-surface tracking-tighter mb-2 font-headline">
             {isRtl ? 'نبض الشارع' : 'Pulse of the Street'}
           </h1>
@@ -86,12 +86,12 @@ const Trending: React.FC = () => {
         </header>
 
         <section>
-          <div className={cn("flex items-center justify-between mb-6", isRtl ? "flex-row-reverse" : "flex-row")}>
-            <h2 className={cn("text-2xl font-bold text-on-surface flex items-center gap-3", isRtl ? "flex-row-reverse" : "flex-row")}>
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-2xl font-bold text-on-surface flex items-center gap-3">
               <Flame className="text-tertiary fill-tertiary" size={24} />
               <span>{isRtl ? 'رائج الآن' : 'Trending Now'}</span>
             </h2>
-            <div className={cn("flex gap-2", isRtl ? "flex-row-reverse" : "flex-row")}>
+            <div className="flex gap-2">
               <span className="bg-surface-container-high px-4 py-1.5 rounded-full text-xs font-bold text-on-surface-variant">
                 {isRtl ? 'عالمي' : 'Global'}
               </span>
@@ -105,21 +105,18 @@ const Trending: React.FC = () => {
             {trendingTerms.map((term) => (
               <Card key={term.id} padding="none" className="group hover:shadow-xl transition-all duration-300">
                 <div className="p-6">
-                  <div className={cn("flex justify-between items-start mb-4", isRtl ? "flex-row-reverse" : "flex-row")}>
+                  <div className="flex justify-between items-start mb-4">
                     <Badge variant="secondary">{term.region}</Badge>
                     <span className="text-on-surface-variant text-sm font-medium">{term.posts} {isRtl ? 'منشور' : 'posts'}</span>
                   </div>
-                  <h3 className={cn(
-                    "text-3xl font-black text-primary mb-2 transition-transform",
-                    isRtl ? "text-right group-hover:-translate-x-2" : "text-left group-hover:translate-x-2"
-                  )}>
+                  <h3 className="text-3xl font-black text-primary mb-2 transition-transform group-hover:translate-x-2 rtl:group-hover:-translate-x-2">
                     {term.term}
                   </h3>
-                  <p className={cn("text-on-surface-variant text-sm leading-relaxed mb-6", isRtl ? "text-right" : "text-left")}>
+                  <p className="text-on-surface-variant text-sm leading-relaxed mb-6">
                     {term.meaning}
                   </p>
-                  <div className={cn("flex items-center gap-2", isRtl ? "flex-row-reverse" : "flex-row")}>
-                    <div className={cn("flex -space-x-2", isRtl && "space-x-reverse")}>
+                  <div className="flex items-center gap-2">
+                    <div className="flex -space-x-2 rtl:space-x-reverse">
                       {term.avatars.map((avatar, i) => (
                         <img key={i} src={avatar} alt="user" className="w-8 h-8 rounded-full border-2 border-surface-container-lowest" />
                       ))}
@@ -132,27 +129,24 @@ const Trending: React.FC = () => {
 
             <Card padding="none" className="md:col-span-2 group hover:shadow-xl transition-all duration-300">
               <div className="p-6">
-                <div className={cn("flex justify-between items-start mb-4", isRtl ? "flex-row-reverse" : "flex-row")}>
+                <div className="flex justify-between items-start mb-4">
                   <Badge variant="secondary">{featuredTerm.region}</Badge>
                   <span className="text-on-surface-variant text-sm font-medium">{featuredTerm.posts} {isRtl ? 'منشور' : 'posts'}</span>
                 </div>
-                <div className={cn("flex flex-col md:flex-row gap-8", isRtl ? "md:flex-row-reverse" : "md:flex-row")}>
-                  <div className={cn("flex-1", isRtl ? "text-right" : "text-left")}>
-                    <h3 className={cn(
-                      "text-3xl font-black text-primary mb-2 transition-transform",
-                      isRtl ? "group-hover:-translate-x-2" : "group-hover:translate-x-2"
-                    )}>
+                <div className="flex flex-col md:flex-row gap-8">
+                  <div className="flex-1">
+                    <h3 className="text-3xl font-black text-primary mb-2 transition-transform group-hover:translate-x-2 rtl:group-hover:-translate-x-2">
                       {featuredTerm.term}
                     </h3>
                     <p className="text-on-surface-variant text-sm leading-relaxed mb-4">
                       {featuredTerm.meaning}
                     </p>
-                    <div className={cn("flex gap-4", isRtl ? "flex-row-reverse" : "flex-row")}>
-                      <div className={cn("flex items-center gap-1 text-tertiary font-bold text-xs", isRtl && "flex-row-reverse")}>
+                    <div className="flex gap-4">
+                      <div className="flex items-center gap-1 text-tertiary font-bold text-xs">
                         <TrendingUp size={14} />
                         <span>{isRtl ? 'صعود سريع' : 'Rising Fast'}</span>
                       </div>
-                      <div className={cn("flex items-center gap-1 text-outline font-medium text-xs", isRtl && "flex-row-reverse")}>
+                      <div className="flex items-center gap-1 text-outline font-medium text-xs">
                         <MessageSquare size={14} />
                         <span>324 {isRtl ? 'مجلس نشط' : 'Active Majlis'}</span>
                       </div>
@@ -173,7 +167,7 @@ const Trending: React.FC = () => {
         </section>
 
         <Card variant="low" padding="lg" className="bg-primary/5 border border-primary/10">
-          <h2 className={cn("text-2xl font-bold text-on-surface mb-6 flex items-center gap-3", isRtl ? "flex-row-reverse" : "flex-row")}>
+          <h2 className="text-2xl font-bold text-on-surface mb-6 flex items-center gap-3">
             <Globe className="text-primary" size={24} />
             <span>{isRtl ? 'اللهجات الرائجة' : 'Trending Dialects'}</span>
           </h2>
@@ -181,8 +175,7 @@ const Trending: React.FC = () => {
             {trendingDialects.map((dialect, i) => (
               <div key={i} className={cn(
                 "bg-surface-container-lowest p-4 rounded-2xl shadow-sm border-b-4",
-                dialect.color,
-                isRtl ? "text-right" : "text-left"
+                dialect.color
               )}>
                 <div className="text-xs font-bold text-on-surface-variant mb-1">
                   {isRtl ? `المركز #${i+1}` : `Rank #${i+1}`}
@@ -197,18 +190,18 @@ const Trending: React.FC = () => {
 
       <aside className="lg:col-span-4 space-y-8">
         <Card variant="low" padding="lg">
-          <h2 className={cn("text-xl font-bold text-on-surface mb-6 flex items-center gap-2", isRtl ? "flex-row-reverse" : "flex-row")}>
+          <h2 className="text-xl font-bold text-on-surface mb-6 flex items-center gap-2">
             <Award className="text-tertiary fill-tertiary" size={20} />
             <span>{isRtl ? 'أبرز المساهمين' : 'Top Contributors'}</span>
           </h2>
           <div className="space-y-6">
             {topContributors.map((c, i) => (
-              <div key={i} className={cn("flex items-center justify-between", isRtl ? "flex-row-reverse" : "flex-row")}>
-                <div className={cn("flex items-center gap-3", isRtl ? "flex-row-reverse" : "flex-row")}>
+              <div key={i} className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
                   <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-primary/10">
                     <img src={c.avatar} alt={c.name} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                   </div>
-                  <div className={isRtl ? "text-right" : "text-left"}>
+                  <div>
                     <div className="font-bold text-on-surface">{c.name}</div>
                     <div className="text-xs text-on-surface-variant">{c.count} {isRtl ? 'مساهمة' : 'contributions'}</div>
                   </div>
@@ -224,7 +217,7 @@ const Trending: React.FC = () => {
           </Button>
         </Card>
 
-        <section className={cn("bg-primary overflow-hidden rounded-3xl relative p-8 text-on-primary", isRtl ? "text-right" : "text-left")}>
+        <section className="bg-primary overflow-hidden rounded-3xl relative p-8 text-on-primary">
           <div className="relative z-10">
             <span className="text-[10px] font-black tracking-widest uppercase opacity-70">
               {isRtl ? 'تسليط الضوء على المجتمع' : 'Community Spotlight'}
@@ -241,8 +234,8 @@ const Trending: React.FC = () => {
               {isRtl ? 'انضم للمجتمع' : 'Join Community'}
             </Button>
           </div>
-          <div className="absolute right-[-20%] bottom-[-20%] w-48 h-48 bg-primary-container rounded-full opacity-20 blur-3xl" />
-          <div className="absolute left-[-10%] top-[-10%] w-32 h-32 bg-secondary rounded-full opacity-10 blur-2xl" />
+          <div className="absolute end-[-20%] bottom-[-20%] w-48 h-48 bg-primary-container rounded-full opacity-20 blur-3xl" />
+          <div className="absolute start-[-10%] top-[-10%] w-32 h-32 bg-secondary rounded-full opacity-10 blur-2xl" />
         </section>
 
         <Card variant="low" padding="lg" className="flex flex-col items-center text-center space-y-4">

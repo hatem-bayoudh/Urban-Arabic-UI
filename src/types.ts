@@ -1,20 +1,30 @@
 export interface Term {
   id: string;
   term: string;
-  arabicTerm?: string;
-  transliteration?: string;
-  meaning: string;
-  example?: string;
+  arabicTerm: string;
   region: string;
   flag: string;
+  partOfSpeech: string;
+  frequency: 'Low' | 'Medium' | 'High' | 'Very High';
+  sentiment: 'Positive' | 'Neutral' | 'Negative';
+  usageStats: { region: string; percentage: number }[];
+  relatedTerms: string[];
+  proposals: Proposal[];
+}
+
+export interface Proposal {
+  id: string;
+  termId: string;
+  meaning: string;
+  example?: string;
+  arabicExample?: string;
   tags: string[];
   author: string;
   authorAvatar: string;
-  likes: number;
-  dislikes?: number;
-  comments: number;
+  authorTitle?: string;
+  votes: number;
+  commentsCount: number;
   timestamp: string;
-  isNew?: boolean;
 }
 
 export interface Contributor {

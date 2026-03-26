@@ -113,8 +113,8 @@ const Profile: React.FC = () => {
                   referrerPolicy="no-referrer"
                 />
               </div>
-              <div className={cn("text-center md:text-left pb-4 max-w-full", isRtl && "md:text-right")}>
-                <div className={cn("flex items-center gap-2 mb-1 justify-center md:justify-start flex-wrap", isRtl && "flex-row-reverse")}>
+              <div className="text-center md:text-left pb-4 max-w-full">
+                <div className="flex items-center gap-2 mb-1 justify-center md:justify-start flex-wrap">
                   <h1 className="text-4xl font-headline font-black text-on-surface tracking-tight break-words max-w-[15ch] sm:max-w-[20ch] md:max-w-[25ch] lg:max-w-none">
                     {userData.name}
                   </h1>
@@ -137,8 +137,8 @@ const Profile: React.FC = () => {
           <div className="mt-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             {/* Contribution Tier */}
             <div className="lg:col-span-5 bg-primary/5 p-6 rounded-[2rem] border border-primary/10">
-              <div className={cn("flex justify-between items-center mb-4", isRtl && "flex-row-reverse")}>
-                <div className={cn(isRtl && "text-right")}>
+              <div className="flex justify-between items-center mb-4">
+                <div>
                   <h3 className="text-[10px] font-bold text-primary uppercase tracking-widest mb-1">
                     {isRtl ? 'فئة المساهمة' : 'Contribution Tier'}
                   </h3>
@@ -152,7 +152,7 @@ const Profile: React.FC = () => {
               </div>
               
               <div className="space-y-2">
-                <div className={cn("flex justify-between text-[10px] font-bold text-on-surface-variant", isRtl && "flex-row-reverse")}>
+                <div className="flex justify-between text-[10px] font-bold text-on-surface-variant">
                   <span>{isRtl ? `المستوى ${userData.level}` : `Level ${userData.level}`}</span>
                   <span>{isRtl ? `${userData.xp} / ${userData.nextLevelXp} خبرة للمستوى التالي` : `${userData.xp} / ${userData.nextLevelXp} XP to Level ${userData.level + 1}`}</span>
                 </div>
@@ -189,22 +189,19 @@ const Profile: React.FC = () => {
 
             {/* Achievement Badges */}
             <div className="lg:col-span-7">
-              <h3 className={cn("text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-4 px-2", isRtl && "text-right")}>
+              <h3 className="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-4 px-2">
                 {isRtl ? 'شارات الإنجاز' : 'Achievement Badges'}
               </h3>
-              <div className={cn("flex flex-wrap gap-4", isRtl && "flex-row-reverse justify-end")}>
+              <div className="flex flex-wrap gap-4">
                 {userData.achievements.map((achievement) => (
                   <div 
                     key={achievement.id}
-                    className={cn(
-                      "flex items-center gap-3 bg-surface p-3 pr-5 rounded-2xl shadow-sm border border-outline-variant/10 group hover:border-primary/30 transition-colors",
-                      isRtl && "flex-row-reverse pr-3 pl-5"
-                    )}
+                    className="flex items-center gap-3 bg-surface p-3 ps-5 rounded-2xl shadow-sm border border-outline-variant/10 group hover:border-primary/30 transition-colors"
                   >
                     <div className={cn("w-10 h-10 rounded-xl flex items-center justify-center", achievement.color)}>
                       <achievement.icon size={20} />
                     </div>
-                    <div className={cn(isRtl && "text-right")}>
+                    <div>
                       <p className="text-sm font-bold text-on-surface">{achievement.title}</p>
                       <p className="text-[10px] text-on-surface-variant">{achievement.subtitle}</p>
                     </div>
@@ -213,15 +210,15 @@ const Profile: React.FC = () => {
               </div>
 
               <div className="mt-8">
-                <p className={cn("text-on-surface-variant text-base leading-relaxed max-w-2xl italic", isRtl && "text-right")}>
+                <p className="text-on-surface-variant text-base leading-relaxed max-w-2xl italic">
                   "{userData.bio}"
                 </p>
-                <div className={cn("flex flex-wrap gap-6 mt-4", isRtl && "flex-row-reverse")}>
-                  <div className={cn("flex items-center gap-2 text-on-surface-variant text-sm", isRtl && "flex-row-reverse")}>
+                <div className="flex flex-wrap gap-6 mt-4">
+                  <div className="flex items-center gap-2 text-on-surface-variant text-sm">
                     <MapPin size={18} className="text-primary" />
                     <span className="font-medium">{userData.location}</span>
                   </div>
-                  <div className={cn("flex items-center gap-2 text-on-surface-variant text-sm", isRtl && "flex-row-reverse")}>
+                  <div className="flex items-center gap-2 text-on-surface-variant text-sm">
                     <LinkIcon size={18} className="text-primary" />
                     <a href="#" className="font-medium text-primary hover:underline">{userData.website}</a>
                   </div>

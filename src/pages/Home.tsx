@@ -6,6 +6,7 @@ import { useApp } from '../context/AppContext';
 import { cn } from '../lib/utils';
 import { TrendingUp, Award, Plus, Search, ArrowRight } from 'lucide-react';
 import Card from '../components/ui/Card';
+import Input from '../components/ui/Input';
 import Button from '../components/ui/Button';
 import Badge from '../components/ui/Badge';
 
@@ -16,11 +17,8 @@ const Home: React.FC = () => {
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
       <div className="lg:col-span-8 space-y-8">
         {/* Hero Section */}
-        <section className={cn(
-          "relative overflow-hidden rounded-[2rem] bg-surface-container-low p-8 md:p-12",
-          isRtl ? "text-right" : "text-left"
-        )}>
-          <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full -mr-32 -mt-32 blur-3xl"></div>
+        <section className="relative overflow-hidden rounded-[2rem] bg-surface-container-low p-8 md:p-12">
+          <div className="absolute top-0 end-0 w-64 h-64 bg-primary/5 rounded-full -me-32 -mt-32 blur-3xl"></div>
           <div className="relative z-10 max-w-2xl">
             <h1 className="text-5xl md:text-6xl font-black text-on-surface font-headline leading-tight mb-6">
               {isRtl ? (
@@ -35,17 +33,10 @@ const Home: React.FC = () => {
                 : "Discover the language of the Arab streets, from the Ocean to the Gulf. Find terms that define your city."}
             </p>
             <div className="relative group">
-              <Search className={cn(
-                "absolute top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-primary transition-colors",
-                isRtl ? "right-6" : "left-6"
-              )} size={24} />
-              <input 
-                type="text"
+              <Input 
+                icon={<Search size={24} />}
                 placeholder={isRtl ? "ابحث عن كلمة، تعبير، أو مدينة..." : "Search for a word, expression, or city..."}
-                className={cn(
-                  "w-full h-16 bg-white rounded-2xl border-none shadow-sm focus:ring-2 focus:ring-primary/20 text-lg transition-all",
-                  isRtl ? "pr-16 pl-6 text-right" : "pl-16 pr-6 text-left"
-                )}
+                className="h-16 text-lg bg-white shadow-sm"
               />
             </div>
           </div>
@@ -53,7 +44,7 @@ const Home: React.FC = () => {
 
         {/* Term of the Day */}
         <div className="space-y-4">
-          <div className={cn("flex items-center justify-between", isRtl && "flex-row-reverse")}>
+          <div className="flex items-center justify-between">
             <h2 className="text-2xl font-black font-headline text-on-surface">
               {isRtl ? 'مصطلح اليوم' : 'Term of the Day'}
             </h2>
@@ -83,7 +74,7 @@ const Home: React.FC = () => {
       <aside className="lg:col-span-4 space-y-6">
         {/* Trending Dialects */}
         <Card variant="low" className="p-6 rounded-[1.5rem]">
-          <h3 className={cn("text-lg font-bold text-on-surface mb-6 flex items-center gap-2", isRtl ? "flex-row-reverse" : "flex-row")}>
+          <h3 className="text-lg font-bold text-on-surface mb-6 flex items-center gap-2">
             <TrendingUp size={20} className="text-primary" />
             <span>{isRtl ? "اللهجات الأكثر بحثاً" : "Trending Dialects"}</span>
           </h3>
@@ -93,8 +84,8 @@ const Home: React.FC = () => {
               { flag: '🇱🇧', name: isRtl ? 'اللبنانية' : 'Levantine', trend: '+8%' },
               { flag: '🇸🇦', name: isRtl ? 'النجدية' : 'Najdi', trend: '+5%' }
             ].map((item, i) => (
-              <div key={i} className={cn("flex items-center justify-between p-4 bg-surface-container-lowest rounded-2xl hover:bg-surface-container transition-colors cursor-pointer", isRtl ? "flex-row-reverse" : "flex-row")}>
-                <div className={cn("flex items-center gap-3", isRtl ? "flex-row-reverse" : "flex-row")}>
+              <div key={i} className="flex items-center justify-between p-4 bg-surface-container-lowest rounded-2xl hover:bg-surface-container transition-colors cursor-pointer">
+                <div className="flex items-center gap-3">
                   <span className="text-2xl">{item.flag}</span>
                   <span className="font-bold text-sm">{item.name}</span>
                 </div>
@@ -106,7 +97,7 @@ const Home: React.FC = () => {
 
         {/* Trending Terms */}
         <Card variant="low" className="p-6 rounded-[1.5rem]">
-          <h3 className={cn("text-lg font-bold text-on-surface mb-6 flex items-center gap-2", isRtl ? "flex-row-reverse" : "flex-row")}>
+          <h3 className="text-lg font-bold text-on-surface mb-6 flex items-center gap-2">
             <TrendingUp size={20} className="text-tertiary" />
             <span>{isRtl ? "كلمات رائجة" : "Trending Terms"}</span>
           </h3>
@@ -117,7 +108,7 @@ const Home: React.FC = () => {
               { term: 'كفو', count: '1.5k' },
               { term: 'برشا', count: '1.2k' }
             ].map((item, i) => (
-              <div key={i} className={cn("flex items-center justify-between p-3 hover:bg-surface-container-high rounded-xl transition-colors cursor-pointer", isRtl ? "flex-row-reverse" : "flex-row")}>
+              <div key={i} className="flex items-center justify-between p-3 hover:bg-surface-container-high rounded-xl transition-colors cursor-pointer">
                 <span className="font-bold text-on-surface">{item.term}</span>
                 <span className="text-xs text-on-surface-variant">{item.count} {isRtl ? 'بحث' : 'searches'}</span>
               </div>
@@ -126,15 +117,15 @@ const Home: React.FC = () => {
         </Card>
 
         {/* Community Card */}
-        <section className={cn("relative overflow-hidden rounded-[2rem] bg-on-surface p-8 text-white", isRtl ? "text-right" : "text-left")}>
-          <div className="absolute -right-4 -top-4 w-32 h-32 bg-primary/20 rounded-full blur-3xl"></div>
+        <section className="relative overflow-hidden rounded-[2rem] bg-primary p-8 text-primary-foreground">
+          <div className="absolute -end-4 -top-4 w-32 h-32 bg-white/10 rounded-full blur-3xl"></div>
           <h4 className="text-2xl font-black mb-4 font-headline">{isRtl ? 'انضم لمجتمعنا' : 'Join Our Community'}</h4>
-          <p className="text-white/70 text-sm mb-8 leading-relaxed">
+          <p className="text-primary-foreground/70 text-sm mb-8 leading-relaxed">
             {isRtl 
               ? 'ساهم في توثيق الكلمات التي تجعل من مدينتك مكاناً فريداً. كن جزءاً من أكبر معجم للهجات العربية.' 
               : 'Help document the words that make your city unique. Be part of the largest dictionary of Arabic dialects.'}
           </p>
-          <Button fullWidth variant="primary" className="h-14 rounded-2xl text-lg font-bold">
+          <Button fullWidth variant="secondary" className="h-14 rounded-2xl text-lg font-bold">
             {isRtl ? 'إضافة مصطلح' : 'Add a Term'}
           </Button>
         </section>

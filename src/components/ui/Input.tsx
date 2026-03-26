@@ -9,32 +9,24 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 
 const Input: React.FC<InputProps> = ({ label, icon, className, ...props }) => {
   const { isRtl } = useApp();
-
   return (
     <div className="w-full">
       {label && (
-        <label className={cn(
-          "block text-sm font-bold text-on-surface-variant",
-          isRtl ? "pr-1 text-right" : "pl-1 text-left"
-        )}>
+        <label className="block text-sm font-bold text-on-surface-variant ps-1 text-start">
           {label}
         </label>
       )}
       <div className="relative">
         {icon && (
-          <div className={cn(
-            "absolute top-1/2 -translate-y-1/2 text-outline-variant pointer-events-none",
-            isRtl ? "right-4" : "left-4"
-          )}>
+          <div className="absolute top-1/2 -translate-y-1/2 text-outline-variant pointer-events-none inset-inline-start-4">
             {icon}
           </div>
         )}
         <input
+          dir={isRtl ? 'rtl' : 'ltr'}
           className={cn(
-            "w-full bg-surface-container border border-outline-variant/10 rounded-xl py-4 focus:ring-2 focus:ring-primary/20 transition-all text-on-surface",
-            icon && (isRtl ? "pr-12 pl-4" : "pl-12 pr-4"),
-            !icon && "px-5",
-            isRtl ? "text-right" : "text-left",
+            "w-full bg-surface-container border border-outline-variant/10 rounded-xl py-4 focus:ring-2 focus:ring-primary/20 transition-all text-on-surface text-start",
+            icon ? "ps-12 pe-4" : "px-5",
             className
           )}
           {...props}

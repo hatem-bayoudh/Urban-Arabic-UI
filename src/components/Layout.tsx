@@ -15,9 +15,7 @@ const Layout: React.FC = () => {
       
       <main className={cn(
         "pt-24 pb-12 px-6 transition-all duration-300",
-        isRtl 
-          ? (isSidebarCollapsed ? "lg:pr-24 lg:pl-4" : "lg:pr-72 lg:pl-4") 
-          : (isSidebarCollapsed ? "lg:pl-24 lg:pr-4" : "lg:pl-72 lg:pr-4")
+        isSidebarCollapsed ? "lg:ps-24 lg:pe-4" : "lg:ps-72 lg:pe-4"
       )}>
         <div className="max-w-7xl mx-auto">
           <Outlet />

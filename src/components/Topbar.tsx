@@ -4,6 +4,7 @@ import { Bell, Languages, Moon, Sun, Search, Menu, User, Settings, LogOut } from
 import { useApp } from '../context/AppContext';
 import { cn } from '../lib/utils';
 import { motion, AnimatePresence } from 'motion/react';
+import Input from './ui/Input';
 
 const Topbar: React.FC = () => {
   const { isDark, isRtl, toggleTheme, toggleRtl, toggleSidebar, toggleMobileMenu } = useApp();
@@ -46,18 +47,11 @@ const Topbar: React.FC = () => {
             Urban Arabic
           </span>
           
-          <div className="hidden lg:flex relative group">
-            <Search className={cn(
-              "absolute top-1/2 -translate-y-1/2 text-outline-variant group-focus-within:text-primary transition-colors",
-              isRtl ? "right-4" : "left-4"
-            )} size={18} />
-            <input 
-              type="text" 
+          <div className="hidden lg:flex w-64">
+            <Input 
+              icon={<Search size={18} />}
               placeholder={isRtl ? "ابحث عن مصطلح..." : "Search urban terms..."}
-              className={cn(
-                "bg-surface-container-low border border-outline-variant/10 rounded-full py-2 w-64 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all text-sm outline-none",
-                isRtl ? "pr-12 pl-4 text-right" : "pl-12 pr-4 text-left"
-              )}
+              className="py-2 rounded-full text-sm"
             />
           </div>
         </div>
@@ -81,7 +75,7 @@ const Topbar: React.FC = () => {
 
           <button className="p-2 hover:bg-primary/10 rounded-full transition-all active:scale-95 text-primary relative">
             <Bell size={20} />
-            <span className="absolute top-2 right-2 w-2 h-2 bg-primary rounded-full border-2 border-surface"></span>
+            <span className="absolute top-2 end-2 w-2 h-2 bg-primary rounded-full border-2 border-surface"></span>
           </button>
 
           <div className="relative" ref={dropdownRef}>
@@ -104,10 +98,7 @@ const Topbar: React.FC = () => {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 10, scale: 0.95 }}
                   transition={{ duration: 0.2, ease: "easeOut" }}
-                  className={cn(
-                    "absolute top-full mt-3 w-64 bg-surface-container-low border border-outline-variant/10 rounded-2xl shadow-2xl overflow-hidden z-[60]",
-                    isRtl ? "left-0" : "right-0"
-                  )}
+                  className="absolute top-full mt-3 w-64 bg-surface-container-low border border-outline-variant/10 rounded-2xl shadow-2xl overflow-hidden z-[60] end-0"
                 >
                   {/* Header */}
                   <div className="p-5 bg-primary/5 border-b border-outline-variant/10">
