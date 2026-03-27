@@ -15,9 +15,13 @@ export interface Term {
 export interface Proposal {
   id: string;
   termId: string;
+  phase: 'proposal' | 'semi-confirmed' | 'review' | 'confirmed';
+  confidenceScore: number;
   meaning: string;
   example?: string;
   arabicExample?: string;
+  researcherNote?: string;
+  observedRegion?: string;
   tags: string[];
   author: string;
   authorAvatar: string;

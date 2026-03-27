@@ -73,7 +73,7 @@ const Settings: React.FC = () => {
                 <p className="text-sm text-outline mt-1">{profileData.role} • {profileData.joined}</p>
               </div>
             </div>
-            <Button variant="outline">
+            <Button variant="secondary">
               {isRtl ? 'تعديل الملف الشخصي' : 'Edit Public Profile'}
             </Button>
           </div>

@@ -25,7 +25,7 @@ const SavedTerms: React.FC = () => {
           </p>
         </div>
         <div className="flex gap-3">
-          <Button variant="low" icon={<Filter size={18} />} className="rounded-full px-6 shadow-sm">
+          <Button variant="secondary" icon={<Filter size={18} />} className="rounded-full px-6 shadow-sm">
             {isRtl ? 'ترتيب حسب الأحدث' : 'Sort by Recent'}
           </Button>
         </div>
@@ -233,7 +233,7 @@ const SavedTerms: React.FC = () => {
             ? 'استكشف الكلمات الرائجة لتجد المزيد من اللهجات المحلية والتعبيرات الحديثة لحفظها في مجلسك الخاص.' 
             : 'Explore the trending feed to find more local dialects and modern expressions to save to your personal Majlis.'}
         </p>
-        <Button variant="low" size="lg" className="rounded-2xl px-10 font-bold border border-primary/10 hover:bg-primary/5 transition-all">
+        <Button variant="secondary" size="lg" className="rounded-2xl px-10 font-bold border border-primary/10 hover:bg-primary/5 transition-all">
           {isRtl ? 'تصفح الكلمات الرائجة' : 'Browse Trending Terms'}
         </Button>
       </div>

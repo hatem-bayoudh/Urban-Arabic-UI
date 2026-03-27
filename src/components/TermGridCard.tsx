@@ -6,6 +6,7 @@ import { useApp } from '../context/AppContext';
 import Card from './ui/Card';
 import Badge from './ui/Badge';
 import PostActions from './PostActions';
+import FlagEmoji from './ui/FlagEmoji';
 import { Term } from '../types';
 
 export interface TermGridCardProps {
@@ -49,7 +50,7 @@ const TermGridCard: React.FC<TermGridCardProps> = ({
           <span className={cn(
             "bg-white/20 backdrop-blur-md text-white px-3 py-1 rounded-full text-xs font-bold mb-4 inline-flex items-center gap-1 w-fit"
           )}>
-            {badge || 'Dialect Spotlight'} {term.flag}
+            {badge || 'Dialect Spotlight'} <FlagEmoji flag={term.flag} size={16} />
           </span>
           <h3 className="text-3xl font-bold text-white font-headline">{term.term}</h3>
           <p className="text-white/80 mt-2 text-sm max-w-lg">
@@ -71,8 +72,8 @@ const TermGridCard: React.FC<TermGridCardProps> = ({
     >
       <div className="flex flex-col flex-1 relative">
         <div className="flex items-center justify-between mb-4">
-          <Badge variant={type === 'reviewed' ? 'secondary' : 'default'} className="px-3 py-1 rounded-full text-xs font-bold">
-            {term.region} {term.flag}
+          <Badge variant={type === 'reviewed' ? 'secondary' : 'primary'} className="px-3 py-1 rounded-full text-xs font-bold">
+            {term.region} <FlagEmoji flag={term.flag} size={16} />
           </Badge>
           <span className="text-outline text-[10px]">{topProposal?.timestamp}</span>
         </div>
@@ -88,8 +89,8 @@ const TermGridCard: React.FC<TermGridCardProps> = ({
         <div className="mt-4 flex items-center justify-between text-[10px] border-t border-outline-variant/10 pt-4">
           <div className="flex items-center gap-1">
             <div className="flex items-center">
-              <span className="w-5 h-5 rounded-full bg-surface-container flex items-center justify-center text-[10px] z-[2]">🇱🇾</span>
-              <span className="w-5 h-5 rounded-full bg-surface-container flex items-center justify-center text-[10px] -ms-1 z-[1]">🇸🇩</span>
+              <span className="w-5 h-5 rounded-full bg-surface-container flex items-center justify-center z-[2]"><FlagEmoji flag="🇱🇾" size={12} /></span>
+              <span className="w-5 h-5 rounded-full bg-surface-container flex items-center justify-center -ms-1 z-[1]"><FlagEmoji flag="🇸🇩" size={12} /></span>
             </div>
             <span className="text-outline">{isRtl ? 'مرتبط' : 'Connected'}</span>
           </div>

@@ -3,6 +3,7 @@ import { Term } from '../types';
 import { cn } from '../lib/utils';
 import { useApp } from '../context/AppContext';
 import { TrendingUp, Smile } from 'lucide-react';
+import FlagEmoji from './ui/FlagEmoji';
 
 interface WordHeroProps {
   term: Term;
@@ -22,7 +23,7 @@ const WordHero: React.FC<WordHeroProps> = ({ term }) => {
       <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-12">
         <div className="space-y-6 text-center md:text-start">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/10 backdrop-blur-md rounded-full text-sm font-semibold tracking-wide uppercase">
-            <span className="text-lg">{term.flag}</span>
+            <FlagEmoji flag={term.flag} size={20} />
             {term.region}
           </div>
           

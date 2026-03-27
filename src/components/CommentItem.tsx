@@ -24,6 +24,7 @@ interface CommentItemProps {
   onReply?: () => void;
   onReport?: () => void;
   className?: string;
+  children?: React.ReactNode;
 }
 
 const CommentItem: React.FC<CommentItemProps> = ({ 
@@ -33,7 +34,8 @@ const CommentItem: React.FC<CommentItemProps> = ({
   hasReplies = false,
   onReply, 
   onReport,
-  className
+  className,
+  children
 }) => {
   const { isRtl } = useApp();
 
@@ -110,7 +112,7 @@ const CommentItem: React.FC<CommentItemProps> = ({
             </div>
             {!isReply && (
               <button 
-                onClick={() => setIsReplying(!isReplying)}
+                onClick={(e) => { e.stopPropagation(); setIsReplying(!isReplying); }}
                 className="text-xs font-bold text-primary hover:underline"
               >
                 {isRtl ? 'رد' : 'Reply'}
@@ -120,25 +122,29 @@ const CommentItem: React.FC<CommentItemProps> = ({
         </div>
       </div>
 
-      {isReplying && (
-        <div className="w-full mt-4 ms-6 ps-[30px] relative animate-in fade-in slide-in-from-top-2 duration-200">
-          <CommentInput 
-            variant="reply"
-            avatar="https://api.dicebear.com/7.x/avataaars/svg?seed=Me"
-            value={replyText}
-            onChange={setReplyText}
-            onSubmit={() => {
-              onReply?.();
-              setIsReplying(false);
-              setReplyText('');
-            }}
-            onCancel={() => setIsReplying(false)}
-            placeholder={isRtl ? "اكتب ردك..." : "Write your reply..."}
-            submitLabel={isRtl ? 'رد' : 'Reply'}
-            cancelLabel={isRtl ? 'إلغاء' : 'Cancel'}
-            minHeight="80px"
-            isLast={isLast}
-          />
+      {/* Render children (replies) or CommentInput below the comment content */}
+      {(children || isReplying) && (
+        <div className="w-full mt-4 ms-6 ps-[30px] relative animate-in fade-in slide-in-from-top-2 duration-200 space-y-6">
+          {children}
+          {isReplying && (
+            <CommentInput 
+              variant="reply"
+              avatar="https://api.dicebear.com/7.x/avataaars/svg?seed=Me"
+              value={replyText}
+              onChange={setReplyText}
+              onSubmit={() => {
+                onReply?.();
+                setIsReplying(false);
+                setReplyText('');
+              }}
+              onCancel={() => setIsReplying(false)}
+              placeholder={isRtl ? "اكتب ردك..." : "Write your reply..."}
+              submitLabel={isRtl ? 'رد' : 'Reply'}
+              cancelLabel={isRtl ? 'إلغاء' : 'Cancel'}
+              minHeight="80px"
+              isLast={isLast}
+            />
+          )}
         </div>
       )}
     </div>

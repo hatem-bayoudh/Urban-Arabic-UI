@@ -5,9 +5,10 @@ import { ChevronDown } from 'lucide-react';
 
 interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
   label?: string;
+  fullWidth?: boolean;
 }
 
-const Select: React.FC<SelectProps> = ({ label, children, className, ...props }) => {
+const Select: React.FC<SelectProps> = ({ label, children, className, fullWidth, ...props }) => {
   return (
     <div className="w-full">
       {label && (

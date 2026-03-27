@@ -88,7 +88,19 @@ const TermDetail: React.FC = () => {
                   ? 'ساهم في "مجلس المودرن" وساعد المجتمع على فهم الفروق الدقيقة في اللهجة.' 
                   : "Contribute to the 'Modern Majlis' and help the community understand the nuance of dialect."}
               </p>
-              <Button fullWidth className="py-4 bg-primary text-on-primary rounded-2xl font-black text-sm tracking-wide shadow-lg shadow-primary/30 hover:shadow-xl transition-all">
+              <Button 
+                fullWidth 
+                className="py-4 bg-primary text-on-primary rounded-2xl font-black text-sm tracking-wide shadow-lg shadow-primary/30 hover:shadow-xl transition-all"
+                onClick={() => navigate('/add', { 
+                  state: { 
+                    mode: 'definition',
+                    arabicTerm: term.arabicTerm,
+                    latinTerm: term.term,
+                    region: term.region,
+                    partOfSpeech: term.partOfSpeech,
+                  }
+                })}
+              >
                 {isRtl ? 'تقديم تعريف جديد' : 'Submit New Definition'}
               </Button>
             </div>

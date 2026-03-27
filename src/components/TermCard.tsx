@@ -7,6 +7,7 @@ import { useApp } from '../context/AppContext';
 import Card from './ui/Card';
 import Badge from './ui/Badge';
 import PostActions from './PostActions';
+import FlagEmoji from './ui/FlagEmoji';
 
 interface TermCardProps {
   term: Term;
@@ -38,7 +39,7 @@ const TermCard: React.FC<TermCardProps> = ({ term, featured }) => {
           </div>
         </div>
         <Badge variant="primary" className="px-4 py-1.5 rounded-full text-sm font-bold flex items-center gap-2">
-          {term.region} {term.flag}
+          {term.region} <FlagEmoji flag={term.flag} size={16} />
         </Badge>
       </div>
 
@@ -58,9 +59,9 @@ const TermCard: React.FC<TermCardProps> = ({ term, featured }) => {
             {isRtl ? 'مصطلحات ذات صلة:' : 'Related Terms:'}
           </span>
           <div className="flex items-center">
-            <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center border-2 border-surface-container-low shadow-sm text-lg z-[3]">🇸🇦</div>
-            <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center border-2 border-surface-container-low shadow-sm text-lg -ms-2 z-[2]">🇯🇴</div>
-            <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center border-2 border-surface-container-low shadow-sm text-lg -ms-2 z-[1]">🇵🇸</div>
+            <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center border-2 border-surface-container-low shadow-sm z-[3]"><FlagEmoji flag="🇸🇦" size={18} /></div>
+            <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center border-2 border-surface-container-low shadow-sm -ms-2 z-[2]"><FlagEmoji flag="🇯🇴" size={18} /></div>
+            <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center border-2 border-surface-container-low shadow-sm -ms-2 z-[1]"><FlagEmoji flag="🇵🇸" size={18} /></div>
           </div>
         </div>
         <button 

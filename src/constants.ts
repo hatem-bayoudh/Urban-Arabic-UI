@@ -27,6 +27,9 @@ export const MOCK_TERMS: Term[] = [
         author: 'Mehdi Jomaa',
         authorAvatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Mehdi',
         authorTitle: 'Top Contributor',
+        phase: 'confirmed',
+        confidenceScore: 98,
+        observedRegion: 'National standard',
         votes: 482,
         commentsCount: 24,
         timestamp: '2 days ago'
@@ -41,6 +44,10 @@ export const MOCK_TERMS: Term[] = [
         author: 'Selima B.',
         authorAvatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Selima',
         authorTitle: 'Linguist',
+        phase: 'semi-confirmed',
+        confidenceScore: 65,
+        researcherNote: 'This is probably correct but needs more dialectal nuance. Help refine it by providing local usage examples.',
+        observedRegion: 'Western Borders (Kasserine)',
         votes: 128,
         commentsCount: 12,
         timestamp: '1 week ago'
@@ -73,6 +80,8 @@ export const MOCK_TERMS: Term[] = [
         author: 'Layla M.',
         authorAvatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Layla',
         authorTitle: 'Community Leader',
+        phase: 'proposal',
+        confidenceScore: 20,
         votes: 3200,
         commentsCount: 156,
         timestamp: '2 days ago'
@@ -167,6 +176,8 @@ export const CONTRIBUTED_TERMS: Term[] = [
         author: 'ziad_beirut',
         authorAvatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Ziad',
         authorTitle: 'Senior Contributor',
+        phase: 'confirmed',
+        confidenceScore: 92,
         votes: 1200,
         commentsCount: 48,
         timestamp: '2 hours ago'
@@ -199,6 +210,8 @@ export const CONTRIBUTED_TERMS: Term[] = [
         author: 'omar_cairo',
         authorAvatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Omar',
         authorTitle: 'Expert',
+        phase: 'semi-confirmed',
+        confidenceScore: 78,
         votes: 850,
         commentsCount: 32,
         timestamp: '5 hours ago'
@@ -231,6 +244,8 @@ export const CONTRIBUTED_TERMS: Term[] = [
         author: 'hassan_sd',
         authorAvatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Hassan',
         authorTitle: 'Native Speaker',
+        phase: 'confirmed',
+        confidenceScore: 95,
         votes: 1500,
         commentsCount: 64,
         timestamp: '1 day ago'
